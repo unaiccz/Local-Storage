@@ -30,6 +30,7 @@ const App = () => {
 
   return (
     <div className="container">
+      <h4> by unaiccz</h4>
       <div className="form-group">
         <input className="form-control" value={input.name} onChange={e => setInput({ ...input, name: e.target.value })} placeholder="Nombre del producto" />
         <input className="form-control" value={input.price} onChange={e => setInput({ ...input, price: e.target.value })} placeholder="Precio del producto" />
