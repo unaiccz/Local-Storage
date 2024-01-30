@@ -19,3 +19,6 @@ La interfaz de usuario consta de dos campos de entrada para el nombre y el preci
 ## Uso
 
 Para usar la aplicación, simplemente ingresa el nombre y el precio de un producto en los campos correspondientes y haz clic en el botón "Crear". Para eliminar un producto, haz clic en el botón "Borrar" del producto correspondiente.
+# v1.2
++ Manejador de formularios && SweetAlert2
++ Framer-motion 
