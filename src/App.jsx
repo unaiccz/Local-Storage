@@ -11,16 +11,15 @@ const App = () => {
   const createData = (e) => {
     e.preventDefault();
     // comprobamos que el input no esté vacío
-    if (input.name.length < 2  || parseInt(input.price) < 0) {
+    if (input.name === "" || input.price === "") {
       // Usamos sweetalert2 para mostrar el error
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Error en los datos ingresados',
+        text: 'Debes llenar todos los campos',
       })
       return;
     }
-
     const currentData = JSON.parse(localStorage.getItem('crudData')) || [];
     currentData.push(input);
     localStorage.setItem('crudData', JSON.stringify(currentData));
@@ -35,10 +34,6 @@ const App = () => {
     localStorage.setItem('crudData', JSON.stringify(currentData));
     setData(currentData);
   }
-  const update = (id, name = "hola", price = 9) => {
-data[id].name = name;
-data[id].price = price;
-  }
 
   // Usamos useEffect para obtener los datos del localstorage cuando se carga la página
   useEffect(() => {
@@ -48,8 +43,6 @@ data[id].price = price;
 
   return (
     <div className="container">
-    <h1>Warehause</h1>
-<hr />
       <h4> by unaiccz</h4>
       <form className="form-group">
         <input className="form-control" value={input.name} onChange={e => setInput({ ...input, name: e.target.value })} placeholder="Nombre del producto" />
@@ -64,11 +57,19 @@ data[id].price = price;
           animate={{ opacity: 1 }}
           transition={{ duration: 2 }}
           className="card"
+          style={{
+            margin: '20px',
+            padding: '20px',
+            borderRadius: '15px',
+            boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
+            transition: '0.3s',
+            backgroundColor: '#f8f9fa'
+          }}
         >
           <div className="card-body">
-            <h5 className="card-title">{item.name}</h5>
-            <p className="card-text">{item.price}</p>
-            <button className="btn btn-danger" onClick={() => deleteData(index)}>Borrar</button>
+            <h5 className="card-title" style={{ color: '#343a40', fontWeight: 'bold' }}>Nombre: {item.name}</h5>
+            <p className="card-text" style={{ color: '#6c757d' }}>Precio: {item.price}</p>
+            <button className="btn btn-danger" style={{ backgroundColor: '#dc3545', borderColor: '#dc3545' }} onClick={() => deleteData(index)}>Borrar</button>
           </div>
         </motion.div>
       ))}
